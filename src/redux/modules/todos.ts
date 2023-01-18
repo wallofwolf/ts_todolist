@@ -1,5 +1,16 @@
 import { v4 as uuidv4 } from 'uuid';
 
+interface Ipayload {
+  payload: Itodos;
+}
+
+interface Itodos {
+  id: string;
+  contents: string;
+  title: string;
+  isDone: boolean;
+}
+
 // 1. action items
 const ADD_TODO = 'ADD_TODO';
 const REMOVE_TODO = 'REMOVE_TODO';
@@ -8,21 +19,21 @@ const SWITCH_TODO = 'SWITCH_TODO';
 // 2. action creators
 // addTodo를 export 왜? 다른 데서 써야 됨
 // 여기서 만든 객체가 디스패치로 들어가면서
-export const addTodo = (payload) => {
+export const addTodo = (payload:Itodos) => {
   return {
     type: ADD_TODO,
     payload,
   };
 };
 
-export const removeTodo = (payload) => {
+export const removeTodo = (payload:Itodos) => {
   return {
     type: REMOVE_TODO,
     payload,
   };
 };
 
-export const switchTodo = (payload) => {
+export const switchTodo = (payload:Itodos) => {
   return {
     type: SWITCH_TODO,
     payload,

@@ -8,13 +8,13 @@ function Input() {
   const [title, setTitle] = useState('');
   const [contents, setContents] = useState('');
   const dispatch = useDispatch();
-  const handleTitleInputChange = (event) => {
+  const handleTitleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
   };
-  const handleContentsInputChange = (event) => {
+  const handleContentsInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setContents(event.target.value);
   };
-  const handleSubmitButtonClick = (event) => {
+  const handleSubmitButtonClick = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const newTodo = {
       id: uuidv4(),

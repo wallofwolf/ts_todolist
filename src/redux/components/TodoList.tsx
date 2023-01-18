@@ -4,18 +4,33 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { removeTodo, switchTodo } from '../modules/todos';
 
-function TodoList({ isActive }) {
+interface Iprops {
+  isActive: boolean;
+}
+
+interface RootState {
+  todos: [Itodos];
+}
+
+interface Itodos {
+  id: string;
+  contents: string;
+  title: string;
+  isDone: boolean;
+}
+
+function TodoList({ isActive }: Iprops) {
   // store에 있는 todos를 가지고 옴
-  const todos = useSelector((state) => state.todos);
+  const todos = useSelector((state: RootState) => state.todos);
   console.log(todos);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleDeleteButtonClick = (id) => {
+  const handleDeleteButtonClick = (id: string) => {
     dispatch(removeTodo(id));
   };
 
-  const handleSwitchButtonClick = (id) => {
+  const handleSwitchButtonClick = (id: string) => {
     dispatch(switchTodo(id));
   };
 
